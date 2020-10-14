@@ -12,22 +12,39 @@ class object{
     void DisplayFinal();
 };
 void object::Read() {
+    int deliv;
     printf("Введите стороны объекта:\nДлина = ");
     scanf_s("%f", &a);
     printf("Ширина = ");
     scanf_s("%f", &b);
     printf("Высота = ");
     scanf_s("%f", &c);
+    do {
+        printf("Доставлен?(1-да, 0-нет) - ");
+        scanf_s("%d", &deliv);
+    } while (deliv > 1 || deliv < 0);
+    if (deliv) {
+        deliver = true;
+    }
+    else deliver = false;
     printf("\n**************************");
 }
 void object::Display() {
     printf("\nПараметры объекта\nДлина = %f\nШирина = %f\nВысота = %f", a, b, c);
+    if (deliver) {
+        printf("\nОбъект доставлен");
+    }
+    else printf("\nОбъект не доставлен");
     printf("\n**************************");
 }
 void object::Init(float lenght, float width, float height,bool deliv) {
     a = lenght;
     b = width;
     c = height;
+    if (deliv) {
+        deliver = true;
+    }
+    else deliver = false;
 }
 void object::calcvolume() {
     volume = a * b * c;
@@ -37,6 +54,10 @@ void object::calcperim() {
 }
 void object::DisplayFinal() {
     printf("\nПараметры объекта\nДлина = %f\nШирина = %f\nВысота = %f\nОбъем = %f\nПериметр = %f", a, b, c, volume, perimeter);
+    if (deliver) {
+        printf("\nОбъект доставлен");
+    }
+    else printf("\nОбъект не доставлен");
     printf("\n**************************");
 }
 
@@ -59,4 +80,5 @@ void compare(object obj1, object obj2) {
 int main()
 {
     setlocale(LC_ALL, "Rus");
+
 }
