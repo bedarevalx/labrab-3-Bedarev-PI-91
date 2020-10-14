@@ -80,5 +80,20 @@ void compare(object obj1, object obj2) {
 int main()
 {
     setlocale(LC_ALL, "Rus");
-
+    object* obj1 = new object;
+    object* obj2 = new object;
+    (*obj1).Read();
+    obj2->Init(14, 18, 12, false);
+    (*obj1).Display();
+    obj2->Display();
+    (*obj1).calcvolume();
+    obj2->calcvolume();
+    (*obj1).calcperim();
+    obj2->calcperim();
+    compare(*obj1, *obj2);
+    (*obj1).DisplayFinal();
+    obj2->DisplayFinal();
+    delete obj1;
+    delete obj2;
+    return 0;
 }
